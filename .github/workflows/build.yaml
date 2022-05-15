@@ -1,0 +1,27 @@
+name: Python package
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: windows-2022
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.9.12
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.9.12
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Create executable
+        run: |
+          pyinstaller.exe -F -c .\converte.py
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: Packaged executable
+          path: .\dist\converte.exe
+          retention-days: 5
