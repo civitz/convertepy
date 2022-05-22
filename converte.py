@@ -96,7 +96,7 @@ def gui():
               ]
 
     # Create the Window
-    window = sg.Window('Window Title', layout)
+    window = sg.Window('Converte', layout)
     # Event Loop to process "events" and get the "values" of the inputs
     while True:
         event, values = window.read()
